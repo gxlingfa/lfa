@@ -35,8 +35,20 @@ public class LSMCJob {
     private SiteExtractService jmSiteExtractService;
     @Resource
     private SiteExtractService zjSiteExtractService;
+    @Resource
+    private SiteExtractService gdSiteExtractService;
+    @Resource
+    private SiteExtractService hzSiteExtractService;
+    @Resource
+    private SiteExtractService jySiteExtractService;
+    @Resource
+    private SiteExtractService mmSiteExtractService;
+    @Resource
+    private SiteExtractService sgSiteExtractService;
+    @Resource
+    private SiteExtractService zqSiteExtractService;
 
-    @Scheduled(fixedDelay = 60*1000)
+    @Scheduled(fixedDelay = 30*60*1000)
     public void run(){
         List<Notice> noticeList=new ArrayList<>();
         log.info("定时任务开始执行");
@@ -66,6 +78,30 @@ public class LSMCJob {
         log.info("湛江土地资源更新：{}条",tempList.size());
         if(!tempList.isEmpty())
             noticeList.addAll(tempList);
+        tempList=gdSiteExtractService.extract();
+        if(!tempList.isEmpty()){
+            noticeList.addAll(tempList);
+        }
+        tempList=hzSiteExtractService.extract();
+        if(!tempList.isEmpty()){
+            noticeList.addAll(tempList);
+        }
+        tempList=jySiteExtractService.extract();
+        if(!tempList.isEmpty()){
+            noticeList.addAll(tempList);
+        }
+        tempList=mmSiteExtractService.extract();
+        if(!tempList.isEmpty()){
+            noticeList.addAll(tempList);
+        }
+        tempList=sgSiteExtractService.extract();
+        if(!tempList.isEmpty()){
+            noticeList.addAll(tempList);
+        }
+        tempList=zqSiteExtractService.extract();
+        if(!tempList.isEmpty()){
+            noticeList.addAll(tempList);
+        }
        noticeService.notify(noticeList);
     }
 }

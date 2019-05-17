@@ -2,11 +2,13 @@ package com.lfa.lsmc.service;
 
 import com.lfa.lsmc.entity.Notice;
 import com.lfa.lsmc.util.MD5Utils;
+import lombok.extern.slf4j.Slf4j;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * 网站提取接口
@@ -51,8 +53,13 @@ public interface SiteExtractService {
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
                 return sdf.parse(dateStr);
             }catch (Exception e1){
-                SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                return sdf.parse(dateStr);
+                try {
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                    return sdf.parse(dateStr);
+                }catch (Exception e2){
+                    SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.US);
+                    return sdf.parse(dateStr);
+                }
             }
 
         }

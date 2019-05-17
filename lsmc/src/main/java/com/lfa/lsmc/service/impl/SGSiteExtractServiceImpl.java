@@ -38,7 +38,10 @@ public class SGSiteExtractServiceImpl implements SiteExtractService {
             Element aE=tr.selectFirst("a");
             String url=sourceRoot+aE.attr("href");
             String title=aE.text().trim();
-            Date releaseDate=this.parseDate(tr.select("td").get(2).text().trim());
+
+            Date releaseDate=this.parseDate(tr.select("td").get(2).text());
+            log.error(">>"+tr.select("td").get(2).text());
+            log.error(">>"+releaseDate);
             if(daysOfTwo(today,releaseDate)>2){
                 log.error("最新公告已经超过2天，不需要在继续处理");
                 break;
