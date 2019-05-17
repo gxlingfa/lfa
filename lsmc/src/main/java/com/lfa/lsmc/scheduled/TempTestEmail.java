@@ -15,7 +15,7 @@ import java.util.List;
  * @Date 21:40 2019/5/15
  * @Description TODO
  */
-//@Component
+@Component
 public class TempTestEmail {
     @Resource
     private NoticeService noticeService;

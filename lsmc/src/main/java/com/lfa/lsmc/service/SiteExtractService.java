@@ -46,7 +46,7 @@ public interface SiteExtractService {
      */
     default Date parseDate(String dateStr) throws ParseException {
         try{
-            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             return sdf.parse(dateStr);
         }catch (Exception e){
             try{
@@ -54,7 +54,7 @@ public interface SiteExtractService {
                 return sdf.parse(dateStr);
             }catch (Exception e1){
                 try {
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                    SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
                     return sdf.parse(dateStr);
                 }catch (Exception e2){
                     SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.US);

@@ -33,7 +33,7 @@
         <tr><td>${item_index+1}</td>
             <td>${item.source.desc}</td>
             <td><a href="${item.url}">${item.title}</a> </td>
-            <td>${item.releaseDate? datetime('yyyy-MM-dd hh:mm:ss')}</td>
+            <td>${item.releaseDate?datetime}</td>
         </tr>
             </#list>
             </#if>

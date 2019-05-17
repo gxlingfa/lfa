@@ -48,7 +48,7 @@ public class LSMCJob {
     @Resource
     private SiteExtractService zqSiteExtractService;
 
-    @Scheduled(fixedDelay = 30*60*1000)
+//    @Scheduled(fixedDelay = 30*60*1000)
     public void run(){
         List<Notice> noticeList=new ArrayList<>();
         log.info("定时任务开始执行");
