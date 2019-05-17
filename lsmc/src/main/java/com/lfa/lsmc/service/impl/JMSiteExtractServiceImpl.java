@@ -36,7 +36,7 @@ public class JMSiteExtractServiceImpl implements SiteExtractService {
         Date today=new Date();
         for(Element li:lis){
             Element aE=li.selectFirst("a");
-            String url=sourceRoot+aE.attr("href");
+            String url=aE.attr("href");
             String title=aE.attr("title");
             Date releaseDate=this.parseDate(aE.selectFirst("span").text());
             if(daysOfTwo(today,releaseDate)>2){
