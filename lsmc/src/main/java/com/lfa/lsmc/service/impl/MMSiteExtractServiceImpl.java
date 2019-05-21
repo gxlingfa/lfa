@@ -24,14 +24,12 @@ public class MMSiteExtractServiceImpl implements SiteExtractService {
     @Value("${mm_source_root}")
     private String sourceRoot;
 
-    @Resource
-    private NoticeService noticeService;
     @Override
     public List<Notice> extract() {
         log.info("抓取茂名土地资源公告信息。。。。。。");
         List<Notice> notices=new ArrayList<>();
         try{
-        Document doc= Jsoup.connect(sourceUrl).execute().parse();
+        Document doc= Jsoup.connect(sourceUrl).timeout(600000).execute().parse();
         Elements tables=doc.select("table").get(2).select("table");
         //TODO 茂名这个卵仔太复杂，先等等
         Date today=new Date();

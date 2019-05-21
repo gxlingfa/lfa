@@ -31,7 +31,7 @@ public class JMSiteExtractServiceImpl implements SiteExtractService {
         log.info("抓取江门土地资源公告信息。。。。。。");
         List<Notice> notices=new ArrayList<>();
         try{
-        Document doc= Jsoup.connect(sourceUrl).execute().parse();
+        Document doc= Jsoup.connect(sourceUrl).timeout(600000).execute().parse();
         Elements lis=doc.select(".headline-left").select(".tab-item").select(".itemtw").select("li");
         Date today=new Date();
         for(Element li:lis){

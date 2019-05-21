@@ -30,16 +30,12 @@ public class GZSiteExtractServiceImpl implements SiteExtractService {
     private String sourceUrl;
     @Value("${gz_source_root}")
     private String sourceRoot;
-
-    @Resource
-    private NoticeService noticeService;
     @Override
     public List<Notice> extract() {
         List<Notice> notices=new ArrayList<>();
         Date today=new Date();
         try {
-            this.setProxy();
-            Document doc= Jsoup.connect(sourceUrl).timeout(60000).execute().parse();
+            Document doc= Jsoup.connect(sourceUrl).timeout(600000).execute().parse();
             Elements trs=doc.selectFirst(".infor_lb").select("tr");
             for(Element tr:trs){
                 Elements tds=tr.select("td");

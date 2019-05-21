@@ -2,7 +2,6 @@ package com.lfa.lsmc.service;
 
 import com.lfa.lsmc.entity.Notice;
 import com.lfa.lsmc.util.MD5Utils;
-import lombok.extern.slf4j.Slf4j;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,11 +31,6 @@ public interface SiteExtractService {
     default String getMd5(Notice notice) {
         String cont=notice.getTitle()+notice.getSource()+notice.getReleaseDate();
         return  MD5Utils.GetMD5Code(cont);
-    }
-
-    default void setProxy(){
-        System.getProperties().setProperty("http.proxyHost", "10.180.136.23");
-        System.getProperties().setProperty("http.proxyPort", "808");
     }
     /**
      * 时间转换

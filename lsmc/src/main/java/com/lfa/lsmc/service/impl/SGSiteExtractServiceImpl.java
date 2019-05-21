@@ -23,15 +23,12 @@ public class SGSiteExtractServiceImpl implements SiteExtractService {
     private String sourceUrl;
     @Value("${sg_source_root}")
     private String sourceRoot;
-
-    @Resource
-    private NoticeService noticeService;
     @Override
     public List<Notice> extract() {
         log.info("抓取韶关土地资源公告信息。。。。。。");
         List<Notice> notices=new ArrayList<>();
         try{
-        Document doc= Jsoup.connect(sourceUrl).execute().parse();
+        Document doc= Jsoup.connect(sourceUrl).timeout(600000).execute().parse();
         Elements trs=doc.selectFirst("#dataList").selectFirst("tbody").select("tr");
         Date today=new Date();
         for(Element tr:trs){

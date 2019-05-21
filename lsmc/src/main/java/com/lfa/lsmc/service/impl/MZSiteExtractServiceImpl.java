@@ -26,15 +26,12 @@ public class MZSiteExtractServiceImpl implements SiteExtractService {
     private String sourceUrl;
     @Value("${mz_source_root}")
     private String sourceRoot;
-
-    @Resource
-    private NoticeService noticeService;
     @Override
     public List<Notice> extract() {
         log.info("抓取梅州土地资源公告信息。。。。。。");
         List<Notice> notices=new ArrayList<>();
         try{
-            Document doc= Jsoup.connect(sourceUrl).execute().parse();
+            Document doc= Jsoup.connect(sourceUrl).timeout(600000).execute().parse();
             Elements lis=doc.select("#categorypagingcontent").select("li").select(".ewb-data-item");
             Date today=new Date();
             for(Element li:lis){

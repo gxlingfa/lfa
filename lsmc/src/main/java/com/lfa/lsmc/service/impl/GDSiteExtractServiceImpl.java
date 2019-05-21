@@ -32,7 +32,7 @@ public class GDSiteExtractServiceImpl implements SiteExtractService {
         log.info("抓取广东省土地资源公告信息。。。。。。");
         List<Notice> notices=new ArrayList<>();
         try{
-        Document doc= Jsoup.connect(sourceUrl).execute().parse();
+        Document doc= Jsoup.connect(sourceUrl).timeout(600000).execute().parse();
         Elements trs=doc.select("#mainModuleContainer_461_463_465__ctl0_contentTable").select("tr");
         Date today=new Date();
         for(int i=1;i<trs.size();i++){
