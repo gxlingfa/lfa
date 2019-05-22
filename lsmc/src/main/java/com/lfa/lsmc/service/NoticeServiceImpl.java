@@ -57,7 +57,7 @@ public class NoticeServiceImpl implements NoticeService {
         if(noticeList.isEmpty())
             return false;
         try {
-            String txt = "";
+//            String txt = "";
 //            String cont = "%s 新增一个土地转让公告：\n[%s]\n公告日期：%s\n公告明细：%s\n";
             List<Notice> notices=new ArrayList<>();
             for (Notice notice : noticeList) {
